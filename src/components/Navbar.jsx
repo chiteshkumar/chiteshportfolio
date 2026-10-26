@@ -43,6 +43,7 @@ export default function Navbar({ page, setPage }) {
           <a href="#contact" className={page === 'about' ? 'active' : ''} onClick={(e) => go(e, 'contact')}>contact</a>
           <div className="toggle">
             <Spin toggled={isDark} onClick={handleToggle} />
+            
           </div>
         </div>
       </div>
