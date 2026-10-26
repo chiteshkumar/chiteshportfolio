@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact'
-import Fotter from './components/Fotter'
+import Footer from './components/Footer'
 const pageVariants = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
@@ -33,7 +33,7 @@ function App() {
           {page === 'contact' && <Contact />}
         </motion.div>
       </AnimatePresence>
-      <Fotter />
+      <Footer />
     </div>
   );
 }

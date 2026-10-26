@@ -1,6 +1,8 @@
+
 import '../style/home.css';
 import { motion } from 'framer-motion';
-import profileImg2 from '../file_0000000028d08208bd5bd85176c1021f.png';
+import profileImg2 from '../assets/file_0000000028d08208bd5bd85176c1021f.png';
+
 
 export default function Home() {
   return (
@@ -14,6 +16,11 @@ export default function Home() {
         <h1 id="name">Hi, I'm Chitesh Kaushik</h1>
         <h2>Full Stack Web Developer & Ethical Hacker</h2>
         <p>Specializing in building high-performance web applications, developing innovative digital solutions, and strengthening cybersecurity through secure coding and ethical penetration testing.</p>
+        
+        <div className="hero-btns">
+          <button className="btn-primary">Contact Me</button>
+          <button className="btn-secondary">Download CV</button>
+        </div>
       </motion.div>
 
       <motion.div
