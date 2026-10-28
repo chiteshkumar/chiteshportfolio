@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import './style/hero.css';
 import Navbar from './components/Navbar';
@@ -13,29 +13,36 @@ const pageVariants = {
   exit: { opacity: 0, y: -30 },
 };
 
+function Page({ children }) {
+  return (
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={{ duration: 0.4, ease: 'easeInOut' }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 function App() {
-  const [page, setPage] = useState('home');
+  const location = useLocation();
 
   return (
     <div>
-      <Navbar page={page} setPage={setPage} />
+      <Navbar />
 
       <AnimatePresence mode="wait">
-        <motion.div
-          key={page}
-          variants={pageVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          transition={{ duration: 0.4, ease: 'easeInOut' }}
-        >
-          {page === 'home' && <Home />}
-          {page === 'about' && <About />}
-          {page === 'contact' && <Contact />}
-        </motion.div>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Page><Home /></Page>} />
+          <Route path="/about" element={<Page><About /></Page>} />
+          <Route path="/contact" element={<Page><Contact /></Page>} />
+        </Routes>
       </AnimatePresence>
 
-      <Footer setPage={setPage} />
+      <Footer />
     </div>
   );
 }

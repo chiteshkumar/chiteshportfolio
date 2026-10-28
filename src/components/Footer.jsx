@@ -1,5 +1,6 @@
 import React from 'react';
 import '../style/footer.css';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faGithub,
@@ -9,7 +10,7 @@ import {
   faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons';
 
-export default function Footer({ setPage }) {
+export default function Footer() {
   const socialMedia = [
     { id: 1, icon: faYoutube, link: 'https://youtube.com' },
     { id: 2, icon: faFacebookF, link: 'https://facebook.com' },
@@ -18,11 +19,7 @@ export default function Footer({ setPage }) {
     { id: 5, icon: faLinkedinIn, link: 'https://linkedin.com' },
   ];
 
-  const go = (e, target) => {
-    e.preventDefault();
-    setPage(target);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
     <>
@@ -52,11 +49,9 @@ export default function Footer({ setPage }) {
         </div>
 
         <div className="footer-links">
-          <a href="#home" onClick={(e) => go(e, 'home')}>Home</a>
-          <a href="#about" onClick={(e) => go(e, 'about')}>About</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-          <a href="#privacy">Privacy Policy</a>
+          <Link to="/" onClick={toTop}>Home</Link>
+          <Link to="/about" onClick={toTop}>About</Link>
+          <Link to="/contact" onClick={toTop}>Contact</Link>
         </div>
 
         <p className="copyright">© 2026 Chitesh Kaushik. All rights reserved.</p>

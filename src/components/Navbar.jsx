@@ -1,49 +1,49 @@
 import '../style/navbar.css';
 
-import { Spin } from "@theme-toggles/react";
-import "@theme-toggles/react/styles/spin.css";
+// Router
+import { NavLink } from 'react-router-dom';
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+// Theme btn
+import { Spin } from '@theme-toggles/react';
+import '@theme-toggles/react/styles/spin.css';
 
-export default function Navbar({ page, setPage }) {
+// Framer motion
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+
+export default function Navbar() {
   const [isDark, setIsDark] = useState(false);
 
   const handleToggle = () => setIsDark(!isDark);
-
-  const go = (e, target) => {
-    e.preventDefault();
-    setPage(target);
-  };
 
   return (
     <>
       {/* Dark mode animation */}
       <motion.div
         style={{
-          position: "fixed",
+          position: 'fixed',
           top: 0,
           left: 0,
-          width: "100vw",
-          height: "100vh",
-          backgroundColor: "#0a0a0a",
+          width: '100vw',
+          height: '100vh',
+          backgroundColor: '#0a0a0a',
           zIndex: -1,
         }}
         initial={false}
         animate={{
-          clipPath: isDark ? "circle(150% at 90% 10%)" : "circle(0% at 90% 10%)",
+          clipPath: isDark ? 'circle(150% at 90% 10%)' : 'circle(0% at 90% 10%)',
         }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
       />
 
       <div className="navbar">
         <div className="nav-content">
-          <a href="#home" className={page === 'home' ? 'active' : ''} onClick={(e) => go(e, 'home')}>Home</a>
-          <a href="#about" className={page === 'about' ? 'active' : ''} onClick={(e) => go(e, 'about')}>About</a>
-          <a href="#contact" className={page === 'about' ? 'active' : ''} onClick={(e) => go(e, 'contact')}>contact</a>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/about">About</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
+
           <div className="toggle">
             <Spin toggled={isDark} onClick={handleToggle} />
-            
           </div>
         </div>
       </div>
